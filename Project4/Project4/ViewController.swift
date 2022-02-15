@@ -79,7 +79,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
                 }
             }
         }
-
+        if url?.absoluteString == "about:blank" {
+            decisionHandler(.cancel)
+            return
+        }
+        
         let ac = UIAlertController(title: "Sorry!", message: "oops!", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
         present(ac, animated: true)
