@@ -13,18 +13,26 @@ class ViewController: UITableViewController {
      override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .redo, target: self, action: #selector(restartGame))
+
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startWordsURL) {
                 allWords = startWords.components(separatedBy: "\n")
             }
+        } else {
+            showerror(errorTitle: "Unable to load word list", errorMessage: "oops")
         }
-         if allWords.isEmpty {
+        if allWords.isEmpty {
             allWords = ["silkworm"]
         }
         NSLog("allWords.count=\(allWords.count)")
         startGame()
      }
+    @objc func restartGame() {
+        startGame()
+    }
     func startGame() {
         title = allWords.randomElement()
         usedWords.removeAll(keepingCapacity: true)
@@ -51,38 +59,37 @@ class ViewController: UITableViewController {
         ac.addAction(submitAction)
         present(ac, animated: true)
     }
+    func showerror(errorTitle: String, errorMessage: String) {
+        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
     func submit(_ answer: String) {
         let lowerAnswer = answer.lowercased()
-
-        let errorTitle: String
-        let errorMessage: String
-
+        if (title?.lowercased() == lowerAnswer) {
+            showerror(errorTitle: "Same word!", errorMessage: "Cmon...")
+            return
+        }
         if isPossible(word: lowerAnswer) {
             if isOriginal(word: lowerAnswer) {
                 if isReal(word: lowerAnswer) {
-                    usedWords.insert(answer, at: 0)
+                    // Challenge bonus: add the lowercased word, otherwise you can duplicate with an upper first
+                    usedWords.insert(lowerAnswer, at: 0)
 
                     let indexPath = IndexPath(row: 0, section: 0)
                     tableView.insertRows(at: [indexPath], with: .automatic)
 
                     return
                 } else {
-                    errorTitle = "Word not recognised"
-                    errorMessage = "You can't just make them up, you know!"
+                    showerror(errorTitle: "Word not recognised", errorMessage: "You can't just make them up, you know!")
                 }
             } else {
-                errorTitle = "Word used already"
-                errorMessage = "Be more original!"
+                showerror(errorTitle: "Word used already", errorMessage: "Be more original!")
             }
         } else {
             guard let title = title?.lowercased() else { return }
-            errorTitle = "Word not possible"
-            errorMessage = "You can't spell that word from \(title)"
+            showerror(errorTitle: "Word not possible", errorMessage: "You can't spell that word from \(title)")
         }
-
-        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
     }
     func isPossible(word: String) -> Bool {
         guard var tempWord = title?.lowercased() else { return false }
@@ -103,6 +110,7 @@ class ViewController: UITableViewController {
     }
 
     func isReal(word: String) -> Bool {
+        if (word.utf16.count < 3) { return false }
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: word.utf16.count)
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")

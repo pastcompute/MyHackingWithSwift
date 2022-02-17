@@ -13,6 +13,7 @@
 		49390A7827BD120400735D40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49390A7627BD120400735D40 /* Main.storyboard */; };
 		49390A7A27BD120700735D40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49390A7927BD120700735D40 /* Assets.xcassets */; };
 		49390A7D27BD120700735D40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49390A7B27BD120700735D40 /* LaunchScreen.storyboard */; };
+		49BCF21827BE6A8900D1715A /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 49BCF21727BE6A8900D1715A /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		49390A7927BD120700735D40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49390A7C27BD120700735D40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49390A7E27BD120700735D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49BCF21727BE6A8900D1715A /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				49390A7027BD120400735D40 /* AppDelegate.swift */,
 				49390A7227BD120400735D40 /* SceneDelegate.swift */,
 				49390A7427BD120400735D40 /* ViewController.swift */,
+				49BCF21727BE6A8900D1715A /* start.txt */,
 				49390A7627BD120400735D40 /* Main.storyboard */,
 				49390A7927BD120700735D40 /* Assets.xcassets */,
 				49390A7B27BD120700735D40 /* LaunchScreen.storyboard */,
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49390A7D27BD120700735D40 /* LaunchScreen.storyboard in Resources */,
+				49BCF21827BE6A8900D1715A /* start.txt in Resources */,
 				49390A7A27BD120700735D40 /* Assets.xcassets in Resources */,
 				49390A7827BD120400735D40 /* Main.storyboard in Resources */,
 			);
