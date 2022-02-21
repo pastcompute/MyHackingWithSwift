@@ -61,8 +61,10 @@ class ViewController: UIViewController {
                 // we have a previous label – create a height constraint
                 label.topAnchor.constraint(equalTo: previous.bottomAnchor, constant: 10).isActive = true
             } else {
+                if #available(iOS 13.0, *) {
                 // this is the first label - avoid the notch, etc.
                 label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+                }
             }
 
             // set the previous label to be the current one, for the next loop iteration
