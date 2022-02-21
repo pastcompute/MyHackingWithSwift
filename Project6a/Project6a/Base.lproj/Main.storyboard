@@ -18,6 +18,9 @@
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uhy-N5-45h">
                                 <rect key="frame" x="272" y="244" width="224" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Uhy-N5-45h" secondAttribute="height" multiplier="112:57" id="aUs-0U-Msu"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="us"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
@@ -27,6 +30,9 @@
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05B-od-HCU">
                                 <rect key="frame" x="272" y="388" width="224" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="05B-od-HCU" secondAttribute="height" multiplier="112:57" id="Ft9-89-HMd"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="us"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
@@ -36,6 +42,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHs-9J-jXt">
                                 <rect key="frame" x="272" y="100" width="224" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jHs-9J-jXt" secondAttribute="height" multiplier="112:57" id="DC7-vr-tMu"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="us"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
@@ -48,6 +57,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="jHs-9J-jXt" firstAttribute="top" secondItem="N6y-Hx-iwK" secondAttribute="top" constant="30" id="7r7-nS-kl3"/>
+                            <constraint firstItem="05B-od-HCU" firstAttribute="height" secondItem="Uhy-N5-45h" secondAttribute="height" id="8VL-wX-Tsz"/>
+                            <constraint firstItem="Uhy-N5-45h" firstAttribute="height" secondItem="jHs-9J-jXt" secondAttribute="height" id="Uja-ZD-Pho"/>
+                            <constraint firstItem="N6y-Hx-iwK" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="05B-od-HCU" secondAttribute="bottom" constant="20" id="VI7-J7-q3r"/>
                             <constraint firstItem="jHs-9J-jXt" firstAttribute="centerX" secondItem="N6y-Hx-iwK" secondAttribute="centerX" id="gqp-Bz-Z15"/>
                             <constraint firstItem="05B-od-HCU" firstAttribute="top" secondItem="Uhy-N5-45h" secondAttribute="bottom" constant="30" id="lzX-ph-ZNk"/>
                             <constraint firstItem="Uhy-N5-45h" firstAttribute="top" secondItem="jHs-9J-jXt" secondAttribute="bottom" constant="30" id="xev-Ci-fEo"/>
