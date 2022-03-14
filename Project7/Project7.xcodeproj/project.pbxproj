@@ -13,6 +13,9 @@
 		4914704427DEFAF300350FA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4914704227DEFAF300350FA6 /* Main.storyboard */; };
 		4914704627DEFAF400350FA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4914704527DEFAF400350FA6 /* Assets.xcassets */; };
 		4914704927DEFAF400350FA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4914704727DEFAF400350FA6 /* LaunchScreen.storyboard */; };
+		49B1F70427DF4A0700922459 /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B1F70327DF4A0700922459 /* Petition.swift */; };
+		49B1F70727DF4A9200922459 /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B1F70627DF4A9200922459 /* Petitions.swift */; };
+		49B1F70927DF4BD500922459 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B1F70827DF4BD500922459 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		4914704527DEFAF400350FA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4914704827DEFAF400350FA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4914704A27DEFAF400350FA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49B1F70327DF4A0700922459 /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
+		49B1F70627DF4A9200922459 /* Petitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Petitions.swift; path = /Volumes/owc/Projects/LearningSwift/MyHackingWithSwift/Project7/Project7/Petitions.swift; sourceTree = "<absolute>"; };
+		49B1F70827DF4BD500922459 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = /Volumes/owc/Projects/LearningSwift/MyHackingWithSwift/Project7/Project7/DetailViewController.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +62,12 @@
 		4914703B27DEFAF300350FA6 /* Project7 */ = {
 			isa = PBXGroup;
 			children = (
+				49B1F70827DF4BD500922459 /* DetailViewController.swift */,
+				49B1F70627DF4A9200922459 /* Petitions.swift */,
 				4914703C27DEFAF300350FA6 /* AppDelegate.swift */,
 				4914703E27DEFAF300350FA6 /* SceneDelegate.swift */,
 				4914704027DEFAF300350FA6 /* ViewController.swift */,
+				49B1F70327DF4A0700922459 /* Petition.swift */,
 				4914704227DEFAF300350FA6 /* Main.storyboard */,
 				4914704527DEFAF400350FA6 /* Assets.xcassets */,
 				4914704727DEFAF400350FA6 /* LaunchScreen.storyboard */,
@@ -139,8 +148,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4914704127DEFAF300350FA6 /* ViewController.swift in Sources */,
+				49B1F70427DF4A0700922459 /* Petition.swift in Sources */,
 				4914703D27DEFAF300350FA6 /* AppDelegate.swift in Sources */,
+				49B1F70927DF4BD500922459 /* DetailViewController.swift in Sources */,
 				4914703F27DEFAF300350FA6 /* SceneDelegate.swift in Sources */,
+				49B1F70727DF4A9200922459 /* Petitions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
