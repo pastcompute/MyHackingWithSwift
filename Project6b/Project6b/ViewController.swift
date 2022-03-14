@@ -50,18 +50,24 @@ class ViewController: UIViewController {
         view.addSubview(label4)
         view.addSubview(label5)
 
-
+        // togle to true to use the metrics instead
+        if true {
         var previous: UILabel?
 
         for label in [label1, label2, label3, label4, label5] {
-            label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            label.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             label.heightAnchor.constraint(equalToConstant: 88).isActive = true
 
+            if #available(iOS 11.0, *) {
+            label.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5, constant: 80).isActive = true
+            }
+            
             if let previous = previous {
                 // we have a previous label – create a height constraint
                 label.topAnchor.constraint(equalTo: previous.bottomAnchor, constant: 10).isActive = true
             } else {
-                if #available(iOS 13.0, *) {
+                if #available(iOS 11.0, *) {
                 // this is the first label - avoid the notch, etc.
                 label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
                 }
@@ -70,13 +76,19 @@ class ViewController: UIViewController {
             // set the previous label to be the current one, for the next loop iteration
             previous = label
         }
-//        let metrics = ["labelHeight": 188]
-//        let viewsDictionary = ["label1": label1, "label2": label2, "label3": label3, "label4": label4, "label5": label5]
-//        for label in viewsDictionary.keys {
-//            view.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "H:|[\(label)]|", options: [], metrics: nil, views: viewsDictionary))
-//        }
-//        // example using metrics and priorities / high is lesser precedence
-//        view.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "V:|-==10-[label1(labelHeight@999)]-[label2(label1)]-[label3(label1)]-[label4(label1)]-[label5(label1)]->=10-|", options: [], metrics: metrics, views: viewsDictionary))
+            // for an extra trick
+            if #available(iOS 11.0, *) {
+            previous?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 17).isActive = true
+            }
+        } else {
+        let metrics = ["labelHeight": 188]
+        let viewsDictionary = ["label1": label1, "label2": label2, "label3": label3, "label4": label4, "label5": label5]
+        for label in viewsDictionary.keys {
+            view.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "H:|[\(label)]|", options: [], metrics: nil, views: viewsDictionary))
+        }
+        // example using metrics and priorities / high is lesser precedence
+        view.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "V:|-==10-[label1(labelHeight@999)]-[label2(label1)]-[label3(label1)]-[label4(label1)]-[label5(label1)]->=10-|", options: [], metrics: metrics, views: viewsDictionary))
+        }
     }
 
 
