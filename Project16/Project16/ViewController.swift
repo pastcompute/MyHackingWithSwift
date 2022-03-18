@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import WebKit
 
 class ViewController: UIViewController, MKMapViewDelegate {
 
@@ -19,9 +20,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         ]
 
         // Do any additional setup after loading the view.
-        let adelaide = Capital(title: "Adelaide", coordinate: CLLocationCoordinate2D(latitude: -34.91552, longitude: 138.59611), info: "Best city in the world")
-        let mallala = Capital(title: "Mallala", coordinate: CLLocationCoordinate2D(latitude: -34.43851, longitude: 138.510345), info: "Race cars")
-        let glenelg = Capital(title: "Glenelg", coordinate: CLLocationCoordinate2D(latitude: -34.980537, longitude: 138.51095), info: "Beaches")
+        let adelaide = Capital(title: "Adelaide", coordinate: CLLocationCoordinate2D(latitude: -34.91552, longitude: 138.59611), info: "Best city in the world", url: "https://en.wikipedia.org/wiki/Adelaide")
+        let mallala = Capital(title: "Mallala", coordinate: CLLocationCoordinate2D(latitude: -34.43851, longitude: 138.510345), info: "Race cars", url: "https://en.wikipedia.org/wiki/Glenelg,_South_Australia")
+        let glenelg = Capital(title: "Glenelg", coordinate: CLLocationCoordinate2D(latitude: -34.980537, longitude: 138.51095), info: "Beaches", url: "https://en.wikipedia.org/wiki/Mallala,_South_Australia")
 
         mapView.addAnnotation(adelaide)
         mapView.addAnnotation(mallala)
@@ -70,12 +71,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let capital = view.annotation as? Capital else { return }
-        let placeName = capital.title
-        let placeInfo = capital.info
-
-        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
+        
+        let vc = DetailViewController()
+        vc.detailItem = capital
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
