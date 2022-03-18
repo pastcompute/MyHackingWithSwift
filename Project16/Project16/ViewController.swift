@@ -13,6 +13,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(toggleSatellite)),
+        ]
+
         // Do any additional setup after loading the view.
         let adelaide = Capital(title: "Adelaide", coordinate: CLLocationCoordinate2D(latitude: -34.91552, longitude: 138.59611), info: "Best city in the world")
         let mallala = Capital(title: "Mallala", coordinate: CLLocationCoordinate2D(latitude: -34.43851, longitude: 138.510345), info: "Race cars")
@@ -22,7 +27,19 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotation(mallala)
         mapView.addAnnotation(glenelg)
     }
+    func showSatellite(action: UIAlertAction!) {
+        mapView.mapType = .satellite
+    }
+    func showRoadmap(action: UIAlertAction!) {
+        mapView.mapType = .standard
+    }
 
+    @objc func toggleSatellite() {
+        let ac = UIAlertController(title: "Show?", message: "Choose Style", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Satellite", style: .default, handler: showSatellite))
+        ac.addAction(UIAlertAction(title: "Roadmap", style: .default, handler: showRoadmap))
+        present(ac, animated: true)
+    }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         // check if it is one of ours
         guard annotation is Capital else { return nil }
@@ -45,6 +62,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
             // 6 - found the current one, change it
             annotationView?.annotation = annotation
         }
+        let pinthing = annotationView as! MKPinAnnotationView
+        pinthing.pinTintColor = UIColor.magenta
+
 
         return annotationView
     }
