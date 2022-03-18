@@ -16,8 +16,19 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ee0-6Z-CpX">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ee0-6Z-CpX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="6si-8p-YcI"/>
+                            <constraint firstItem="ee0-6Z-CpX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RCX-0u-2as"/>
+                            <constraint firstItem="ee0-6Z-CpX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TVh-UW-FKe"/>
+                            <constraint firstItem="ee0-6Z-CpX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ydr-Yi-nGd"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Chq-8o-yGT"/>
                 </viewController>
