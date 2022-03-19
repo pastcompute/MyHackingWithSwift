@@ -97,12 +97,12 @@ class ViewController: UITableViewController {
             // Yet the app still works after that...
             // What is the tutorial doing incorrectly?
             // Discussion here - https://www.hackingwithswift.com/forums/100-days-of-swift/day-39-project-9-errors-despite-following-the-tutorial/1100
-            tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+            //tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
 
-//            DispatchQueue.main.async {
-//                // now we got here from an async call, do the gui update on gui thread
-//                self.tableView.reloadData()
-//            }
+            DispatchQueue.main.async {
+                // now we got here from an async call, do the gui update on gui thread
+                self.tableView.reloadData()
+            }
         }
         
         // we can also refactor all this to use performselector
