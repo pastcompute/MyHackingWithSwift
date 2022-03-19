@@ -27,13 +27,19 @@ class ViewController: UITableViewController {
             // urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
             urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
         }
-        if let url = URL(string: urlString) {
-            if let data = try? Data(contentsOf: url) {
-                // we're OK to parse!
-                print("viewDidLoad() loaded from url \(url)")
-                parse(json: data)
-            } else {
-                showError()
+        // So, Data(contentsOf) is a blocking call, so for proj9 we want to use GCD to make it async
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let url = URL(string: urlString) {
+                if let data = try? Data(contentsOf: url) {
+                    // we're OK to parse!
+                    print("viewDidLoad() loaded from url \(url)")
+                    self.parse(json: data)
+                    return
+                }
+            }
+            DispatchQueue.main.async {
+                // I think it is better explit here rather than changing the function - time will tell?
+                self.showError()
             }
         }
     }
@@ -53,13 +59,19 @@ class ViewController: UITableViewController {
         return cell
     }
     func parse(json: Data) {
+        NSLog("Parsing json")
         let decoder = JSONDecoder()
 
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitions.results
             print("parsed \(petitions.count) items")
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                // now we got here from an async call, do the gui update on gui thread
+                self.tableView.reloadData()
+            }
         }
+        
+        // we can also refactor all this to use performselector
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
